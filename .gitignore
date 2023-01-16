@@ -4,7 +4,7 @@ node_modules/
 # Data directory
 data/*
 # Konfigurasjon av lokalt tilpassede data
-config.yaml
+# config.yaml
 # Lagring av siste akkumulerte forbruk
 savepower.*
 powersave.*

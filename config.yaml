@@ -1,0 +1,176 @@
+---
+# The IP address or hostname 
+# of your favorite MQTT broker
+mqttBroker: localhost
+brokerPort: 1883
+
+# Enter credentials if needed
+userName: 
+password:
+
+# meterModel can be kaifa, aidon or kamstrup
+meterModel: aidon
+
+# Tibber Pulse listening topic
+#topic: tibber/#
+topic: tibber/#
+
+# ElWiz publishing topics
+pubTopic: meter/ams
+pubStatus: meter/status
+pubNotice: meter/notice
+
+# Publish options for list 1, 2, 3 & status
+list1Retain: false
+list1Qos: 0
+list2Retain: false
+list3Qos: 0
+list3Retain: true
+list3Qos: 1
+
+statusRetain: false
+statusQos: 0
+
+# ElWiz event messages
+willMessage: ElWiz has left the building
+greetMessage: ElWiz is performing
+
+# Tibber Pulse event messages
+onlineMessage: Pulse is talking
+offlineMessage: Pulse is quiet
+
+# Debug mode at startup
+DEBUG: true
+
+# Republish mode at startup
+# DEPRECATED. Use publish modes instead
+REPUBLISH: true
+
+# User has production (solar panels)
+hasProduction: false
+
+
+#############################################
+# Possible publishing modes
+#
+# hassPublish
+# basicPublish
+# customPublish
+#
+# cache
+#  - redis
+#  - memcached
+# storage
+#  - mongodb
+#  - mariadb
+#  - custom
+# 
+publisher: hassPublish
+
+#############################################
+# Publish to Home Assistant (defaults to TRUE)?
+hassPublish: true
+# Home Assistant sensor base topic (defaults to "elwiz/sensor")
+haBaseTopic: elwiz/sensor
+
+# Don't change the following topic unless you
+# have changed the way HomeAssistant read
+# MQTT messages
+haAnnounceTopic: homeassistant/sensor/ElWiz/
+
+#############################################
+# The rest of the configuration is only valid 
+# for the "fetchprices" and "fetch-eu-prices programs
+
+# For the "fetch-eu-prices" program, an access token is
+# needed from "https://transparency.entsoe.eu.
+# You will get this token by writing an email to
+# "transparency@entsoe.eu" and ask for a token
+#
+priceAccessToken: <insert your token here>
+
+# Days to keep data files
+# Files older tham "keepDays" are deleted
+keepDays: 7 
+
+# Windows users without cron may want to use 
+# the "node-schedule" module.
+# Set the following to "true" if that is the case.
+# Cron users should set  it to "false".
+runNodeSchedule: false
+
+# The following recommendedecommended scheduleing
+# will try to fetch prices 15 minutes past 
+# the scheduleHours. The same scheduling is
+# recommended for cron users
+scheduleHours: [15,17,19,21,23]
+scheduleMinutes: [15]
+
+# Where to store currency and price data
+# relative to the program directory
+currencyDirectory: ./data/currencies
+priceDirectory: ./data/prices
+
+# Your local supplier's price information
+# Setting computePrices false for
+# only returning naked spot prices (no VAT)
+computePrices: true
+calculateCost: true
+
+# Send signal about prices availability
+priceTopic: prices
+priceTopicRetain: true
+priceTopicQos: 0
+
+# Use the same currency as your local supplier
+# The following currencies are available:
+# EUR, SEK, NOK, DKR
+priceCurrency: NOK
+
+# The following regions are available.
+# Sweden, Finland, Denmark
+# [SE1, SE2, SE3, SE4, FI, DK1, DK2]
+# [  1,   2,   3,   4,  5,   6,   7]
+# Norway
+# [Oslo, Kr.sand, Bergen, Molde, Tr.heim, Tromsø]
+# [   8,       9,     10,    11,      12,     13]
+# Find your region and insert here.
+# Ask your local supplier if in doubt.
+priceRegion: 12
+
+# Change the following values according
+# to your electric power supplier's invoice
+# Different rate models may require changes to program
+# Suppliers usually adds a fixed dayly OR monthly price
+# Use the ones that apply and set the others to 0.0 
+supplierKwhPrice: 0.0
+supplierDayPrice: 0.0
+supplierMonthPrice: 0.0
+supplierVatPercent: 0.0
+
+# Spot market prices are without VAT
+# A VAT percent is usually needed for private households
+spotVatPercent: 25.0
+
+# Network cost
+# Network fixed prices
+gridVatPercent: 0.0
+gridKwhPrice: 0.0
+gridMonthPrice: 0.0
+gridDayPrice: 0.0
+
+#
+energyTax: 0.0
+energyDayPrice: 0.0
+energyNightPrice: 0.0
+
+dayHoursStart: 06:00
+dayHoursEnd: 22:00
+
+capacity0-2: 0.0
+capacity2-5: 0.0
+capacity5-10: 0.0
+capacity10-15: 0.0
+capacity15-20: 0.0
+capacity20-25: 0.0
+
